@@ -17,8 +17,8 @@ def extractURLs(code):
             if requests.get(extract[i]).status_code == 200:
                 if extract[i] not in urls:
                     urls.append(extract[i])
-                log.write(extract[i])
-                log.write("\n")
+                    log.write(extract[i])
+                    log.write("\n")
     log.close()
 
 def initiate(url):
@@ -44,6 +44,7 @@ def hop():
             initiate(urls[i+1])
 def main():
     firstURL = FRST
+    print("INITIATING",FRST)
     initiate(firstURL)
 if __name__ == "__main__":
     main()
