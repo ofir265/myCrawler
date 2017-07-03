@@ -2,7 +2,7 @@ __author__ = 'Ofir'
 
 import requests
 import re
-FRST = "http://www.theuselessweb.com/"
+FRST = "http://www.thrashermagazine.com/"
 urls = []
 newReg = "http[s]?:\/\/[www\.]?[a-zA-Z0-9@:%_\+~#=\.]{2,256}\.[a-zA-Z0-9\.]{2,10}\/"
 lastPos = 0
@@ -29,9 +29,11 @@ def initiate(url):
             extractURLs(r.text)
             hop()
         else:
+            visited.append(url)
             print("Not ok",r.status_code,"at",url)
             hop()
     except:
+        visited.append(url)
         print("ERROR AT",url)
         hop()
 def hop():
@@ -40,7 +42,7 @@ def hop():
     for i in range(lastPos,len(urls)):
         lastPos += 1
         if(urls[i] not in visited):
-            print("INITATING ",urls[i])
+            print("INITIATING ",urls[i])
             initiate(urls[i+1])
 def main():
     firstURL = FRST
